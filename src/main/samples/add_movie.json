@@ -1,0 +1,9 @@
+// http://localhost:8080/movieapp/rest/movies POST
+
+{
+    "name" : "Skazani na shawshenk",
+    "description" : "ekstra film",
+    "type" : "Drama",
+    "director" : "Robin Wiliams",
+    "year" : "1991"
+}

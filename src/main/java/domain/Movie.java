@@ -13,6 +13,7 @@ public class Movie {
     private List<Comment> comments;
     private List<Actor> actors;
     private List<Rate> rates;
+    private Float avargeRate;
 
     public enum Genre {
         Action,
@@ -89,5 +90,29 @@ public class Movie {
 
     public void setActors(List<Actor> actors) {
         this.actors = actors;
+    }
+
+    public List<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(List<Rate> rates) {
+        this.rates = rates;
+    }
+
+    public Float getAvargeRate() {
+        return avargeRate;
+    }
+
+    public void setAvargeRate(List<Rate> rates) {
+        final Float[] sum = {Float.valueOf(0)};
+        final int[] counter = {0};
+
+        rates.forEach(rate -> {
+           sum[0] = sum[0] + rate.getRate();
+           counter[0]++;
+        });
+
+        this.avargeRate = sum[0] / counter[0];
     }
 }
