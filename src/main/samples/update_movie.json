@@ -1,0 +1,9 @@
+// http://localhost:8080/movieapp/rest/movies/2 PUT
+
+{
+  "name" : "Batman forever",
+  "description" : "o batmanie",
+  "type" : "SciFI",
+  "director" : "Steven Szpilberg",
+  "year" : "1995"
+}

@@ -47,15 +47,23 @@ public class MovieService {
         db.remove(m);
     }
 
-    public void addComment(Movie movie, Comment comment) {
-        List<Comment> currentComments = new ArrayList<Comment>();
+    public void addComment(int id, Comment comment) {
+        List<Comment> currentComments;
         for(Movie m : db) {
-            if(m.getId()==movie.getId()) {
-                currentComments = movie.getComments();
+            if(m.getId()==id) {
+                currentComments = m.getComments();
                 currentComments.add(comment);
                 m.setComments(currentComments);
             }
         }
+    }
+
+    public List<Comment> showComments(int id) {
+        for(Movie m : db) {
+            if(m.getId()==id)
+                return m.getComments();
+        }
+        return null;
     }
 
     public void removeComment(Movie  movie, int id) {

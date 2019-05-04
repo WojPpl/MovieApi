@@ -1,0 +1,8 @@
+// http://localhost:8080/movieapp/rest/movies/2/comments POST
+
+{
+  "id" : 2,
+  "title" : "super zabawa",
+  "author" : "zielony22",
+  "content" : "Fajny film, super zabawa"
+}
