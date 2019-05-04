@@ -1,0 +1,8 @@
+// http://localhost:8080/movieapp/rest/movies/2/actors POST
+
+{
+  "id" : 3,
+  "name" : "Kevin",
+  "surname" : "Costner",
+  "bornYear" : 1950
+}

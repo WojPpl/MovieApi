@@ -13,5 +13,29 @@
             "author" : "Elvis123",
             "content" : "Szału nie ma, obejrzeć można"
         }
+    ],
+    "actors" : [
+        {
+            "id" : 1,
+            "name" : "Alek",
+            "surname" : "Boldwin",
+            "bornYear" : 1964
+        },
+        {
+            "id" : 2,
+            "name" : "George",
+            "surname" : "Clooney",
+            "bornYear" : 1954
+        }
+    ],
+    "rates" : [
+        {
+            "id" : 1,
+            "rate" : 2.5
+        },
+        {
+            "id" : 2,
+            "rate" : 4.3
+        }
     ]
 }

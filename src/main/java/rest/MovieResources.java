@@ -26,16 +26,48 @@ public class MovieResources {
     @POST
     @Consumes (MediaType.APPLICATION_JSON)
     public Response Add(Movie movie) {
+        try{
         db.add(movie);
         return Response.ok(movie.getId()).build();
+        } catch (Exception e) {
+            return  Response.status(404).build();
+        }
     }
 
     @POST
     @Consumes (MediaType.APPLICATION_JSON)
     @Path("/{id}/comments")
     public Response addComment(@PathParam("id") int id, Comment comment) {
+        try{
         db.addComment(id, comment);
         return Response.ok().build();
+        } catch (Exception e) {
+            return  Response.status(404).build();
+        }
+    }
+
+    @POST
+    @Consumes (MediaType.APPLICATION_JSON)
+    @Path("/{id}/rates")
+    public Response addRate(@PathParam("id") int id, Rate rate) {
+        try{
+        db.addRate(id, rate);
+        return Response.ok().build();
+        } catch (Exception e) {
+            return  Response.status(404).build();
+        }
+    }
+
+    @POST
+    @Consumes (MediaType.APPLICATION_JSON)
+    @Path("/{id}/actors")
+    public Response addActor(@PathParam("id") int id, Actor actor) {
+        try{
+        db.addActor(id, actor);
+        return Response.ok().build();
+        } catch (Exception e) {
+            return  Response.status(404).build();
+        }
     }
 
     @GET
@@ -61,6 +93,29 @@ public class MovieResources {
         return Response.ok(result).build();
     }
 
+    @GET
+    @Path("/{id}/rates")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRates(@PathParam("id") int id) {
+
+        Float result = db.get(id).getAvargeRate();
+        if(db.get(id)==null)
+            return Response.status(404).build();
+
+        return Response.ok(result).build();
+    }
+
+    @GET
+    @Path("/{id}/actors")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getActors(@PathParam("id") int id) {
+        List<Actor> result = db.showActors(id);
+        if(result==null) {
+            return Response.status(404).build();
+        }
+        return Response.ok(result).build();
+    }
+
     @PUT
     @Path("/{id}")
     @Consumes (MediaType.APPLICATION_JSON)
@@ -83,4 +138,14 @@ public class MovieResources {
         return Response.ok().build();
     }
 
+    @DELETE
+    @Path("/{id}/comments/{idc}")
+    public Response deleteComment(@PathParam("id") int id, @PathParam("idc") int idc) {
+        try{
+            db.removeComment(id, idc);
+            return Response.ok().build();
+        } catch (Exception e) {
+            return  Response.status(404).build();
+        }
+    }
 }

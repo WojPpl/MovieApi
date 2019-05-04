@@ -1,0 +1,85 @@
+============== MOVIE API ==================
+
+Get all movies
+URL: http://localhost:8080/movieapp/rest/movies
+METHOD : GET
+
+-----------------
+
+Add movie
+URL: http://localhost:8080/movieapp/rest/movies
+METHOD: POST
+CONTENT:
+{ name : string, description : string, type: enum, director: string, year: string,
+comments [{id : int, title: string, author : string, content : string}],
+actors [{id : int, name : string, surname : string, bornYear : int}]
+rates [{ id : int, rate : double}]
+
+
+-----------------
+
+Add comment
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}/comments
+METHOD: POST
+CONTENT:
+{id : int, title : string, author : string, content : string}
+
+-----------------
+
+Add rate
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}/rates
+METHOD: POST
+CONTENT:
+{id : int, rate : int}
+
+-----------------
+
+Add actor
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}/actors
+METHOD: POST
+CONTENT:
+{id : int, name : string, surname : string, bornYear : int}
+
+-----------------
+
+Update movie
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}
+METHOD: PUT
+CONTENT:
+{name : string, description : string, type : enum, director : string, year : string}
+
+-----------------
+
+Get all actors
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}/actors
+METHOD : GET
+
+-----------------
+
+Delete movie
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}
+METHOD: DELETE
+
+-----------------
+
+Delete comment
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}/comments/{comment-id}
+METHOD: DELETE
+
+-----------------
+
+Get specified movie
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}
+METHOD : GET
+
+-----------------
+
+Get all movie comments
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}/comments
+METHOD : GET
+
+-----------------
+
+Get movie avarge rate
+URL: http://localhost:8080/movieapp/rest/movies/{movie-id}/rates
+METHOD : GET

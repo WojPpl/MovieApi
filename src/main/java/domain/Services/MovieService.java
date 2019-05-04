@@ -3,6 +3,7 @@ package domain.Services;
 import domain.Actor;
 import domain.Comment;
 import domain.Movie;
+import domain.Rate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,22 +67,51 @@ public class MovieService {
         return null;
     }
 
-    public void removeComment(Movie  movie, int id) {
-        List<Comment> currentComments = new ArrayList<Comment>();
+    public void removeComment(int id, int idc) {
+        List<Comment> currentComments;
         final Comment[] commentToDelete = {new Comment()};
         for(Movie m : db) {
-            if(m.getId()==movie.getId()) {
-                currentComments = movie.getComments();
+            if(m.getId()==id) {
+                currentComments = m.getComments();
                 List<Comment> finalCurrentComments = currentComments;
                 currentComments.forEach(comment -> {
-                    if(comment.getId()==id) {
+                    if(comment.getId()==idc) {
                         commentToDelete[0] = comment;
                     }
                 });
                 currentComments.remove(commentToDelete[0]);
-                m.setComments(currentComments);
+                m.setComments(finalCurrentComments);
             }
         }
     }
 
+    public void addRate(int id, Rate rate) {
+        List<Rate> currentRates;
+        for (Movie m : db) {
+            if(m.getId() == id) {
+                currentRates = m.getRates();
+                currentRates.add(rate);
+                m.setRates(currentRates);
+            }
+        }
+    }
+
+    public void addActor(int id, Actor actor) {
+        List<Actor> currentActors;
+        for (Movie m : db) {
+            if(m.getId() == id) {
+                currentActors = m.getActors();
+                currentActors.add(actor);
+                m.setActors(currentActors);
+            }
+        }
+    }
+
+    public List<Actor> showActors(int id) {
+        for(Movie m : db) {
+            if(m.getId()==id)
+                return m.getActors();
+        }
+        return null;
+    }
 }

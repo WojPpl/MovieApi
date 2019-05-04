@@ -100,19 +100,17 @@ public class Movie {
         this.rates = rates;
     }
 
-    public Float getAvargeRate() {
-        return avargeRate;
-    }
 
-    public void setAvargeRate(List<Rate> rates) {
+    public float getAvargeRate() {
         final Float[] sum = {Float.valueOf(0)};
         final int[] counter = {0};
 
-        rates.forEach(rate -> {
+        this.rates.forEach(rate -> {
            sum[0] = sum[0] + rate.getRate();
            counter[0]++;
         });
 
         this.avargeRate = sum[0] / counter[0];
+        return this.avargeRate;
     }
 }

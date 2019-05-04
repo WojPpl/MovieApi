@@ -1,0 +1,5 @@
+// http://localhost:8080/movieapp/rest/movies/2/rates POST
+{
+  "id" : 3,
+  "rate": 4
+}
